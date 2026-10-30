@@ -2,37 +2,25 @@ resume = input("Paste Resume Skills:\n")
 
 skills = resume.lower()
 score = 0
+missing = []
 
 print("\n===== ANALYSIS =====\n")
 
-if "python" in skills:
-    print("✅ Python Found")
-    score += 20
-else:
-    print("❌ Python Missing")
+for skill in ["python", "sql", "html", "css", "cloud"]:
 
-if "sql" in skills:
-    print("✅ SQL Found")
-    score += 20
-else:
-    print("❌ SQL Missing")
-
-if "html" in skills:
-    print("✅ HTML Found")
-    score += 20
-else:
-    print("❌ HTML Missing")
-
-if "css" in skills:
-    print("✅ CSS Found")
-    score += 20
-else:
-    print("❌ CSS Missing")
-
-if "cloud" in skills:
-    print("✅ Cloud Found")
-    score += 20
-else:
-    print("❌ Cloud Missing")
+    if skill in skills:
+        print(f"✅ {skill.upper()} Found")
+        score += 20
+    else:
+        print(f"❌ {skill.upper()} Missing")
+        missing.append(skill)
 
 print(f"\nResume Score: {score}/100")
+
+print("\nSuggestions:")
+
+if missing:
+    for skill in missing:
+        print(f"- Learn {skill.upper()}")
+else:
+    print("Excellent Resume!")
